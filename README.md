@@ -318,7 +318,7 @@ Returns the details of a spot specified by its id.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: '/api/spots/detils/:id'
+  * URL: '/api/spots/:id' ----have it after the above endpoint in routes file
   * Body: none
 
 * Successful Response
@@ -1186,7 +1186,7 @@ Update and return an existing booking.
 * Require proper authorization: Booking must belong to the current user
 * Request
   * Method: PUT
-  * URL: '/api/bookings/spot/:spotId'
+  * URL: '/api/bookings/:bookingId'
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -1284,7 +1284,7 @@ Delete an existing booking.
   Spot must belong to the current user
 * Request
   * Method: DELETE
-  * URL: '/api/bookings/currentUser'
+  * URL: '/api/bookings/:bookingId'
   * Body: none
 
 * Successful Response
@@ -1336,7 +1336,7 @@ Delete an existing image for a Spot.
 * Require proper authorization: Spot must belong to the current user
 * Request
   * Method: DELETE
-  * URL: '/api/images/spot/currentUser'
+  * URL: '/api/images/spot/:spotId'
   * Body: none
 
 * Successful Response
@@ -1373,7 +1373,7 @@ Delete an existing image for a Review.
 * Require proper authorization: Review must belong to the current user
 * Request
   * Method: DELETE
-  * URL: '/api/images/review/currentUser'
+  * URL: '/api/images/review/:reviewId'
   * Body: none
 
 * Successful Response
