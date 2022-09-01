@@ -1,8 +1,9 @@
+
 # `AirBnb`
 
 ## Database Schema Design
 
-`<insert database schema design here>`
+<img width="591" alt="Screenshot 2022-09-01 at 9 54 44 AM" src="https://user-images.githubusercontent.com/97665449/187834628-92394ba6-c857-4d99-af98-3d4361ea901a.png">
 
 ## API Documentation
 
