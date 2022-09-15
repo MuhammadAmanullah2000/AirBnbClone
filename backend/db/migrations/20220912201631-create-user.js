@@ -9,10 +9,10 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       firstname: {
-        type: Sequelize.STRING(30)
+        type: Sequelize.STRING
       },
       lastName: {
-        type: Sequelize.STRING(30)
+        type: Sequelize.STRING
       },
       username: {
         type: Sequelize.STRING(30),
