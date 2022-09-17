@@ -55,10 +55,10 @@ module.exports = (sequelize, DataTypes) => {
 
   User.init(
     {
-      firstname: {
+      firstName: {
         type: DataTypes.STRING
       },
-      lastname: {
+      lastName: {
         type: DataTypes.STRING
       },
       username: {
