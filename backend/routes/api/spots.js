@@ -90,11 +90,30 @@ router.post('/:spotId/images',restoreUser,requireAuth,async (req,res) => {
             statusCode: 404
         })
     }
-
-
-
-
 })
 
+router.put('/:spotId',restoreUser,requireAuth,async (req,res) =>{
+    try{
+        console.log(req.params.id)
+        const {address,city,state,country,lat,lng,name,description,price} = req.body
+        let spot = await Spot.findOne({
+            where: {
+                id: req.params.spotId,
+                ownerId: req.user.id
+            }
+        })
+        console.log(spot)
+        spot.set({
+            address,city,state,country,lat,lng,name,description,price
+        })
+        spot = await spot.save();
+        return res.json(spot);
 
+    }catch (e){
+        res.status(404).json({
+            message: "Spot couldn't be found",
+            statusCode: 404
+        })
+    }
+})
 module.exports = router;
