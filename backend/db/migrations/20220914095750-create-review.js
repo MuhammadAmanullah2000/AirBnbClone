@@ -44,7 +44,7 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
-    });
+    }).then(()=> queryInterface.addIndex('Reviews',['review','stars'],{unique:true}));;
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Reviews');

@@ -4,7 +4,7 @@ const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth')
 const { User } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
-const { Spot,Image } = require('../../db/models');
+const { Spot,Image,Review } = require('../../db/models');
 const { ResultWithContext } = require('express-validator/src/chain');
 
 
@@ -88,6 +88,36 @@ router.post('/:spotId/images',restoreUser,requireAuth,async (req,res) => {
         res.status(404).json({
             message: "Spot couldn't be found",
             statusCode: 404
+        })
+    }
+})
+
+router.post('/:spotId/reviews',restoreUser,requireAuth,async (req,res) => {
+        const spot = await Spot.findOne({
+            where: {
+                id: req.params.spotId,
+                ownerId: req.user.id
+            }
+        })
+        if(!spot){
+            return res.status(404).json({
+                message: "Spot couldn't be found",
+                statusCode: 404
+            })
+        }
+    try{
+        const review = await Review.create({
+            userId: req.user.id,
+            spotId: req.params.spotId,
+            review: "This was an awesome spot!",
+            stars: 5
+        })
+        return res.status(201).json(review)
+
+    }catch(e){
+        res.status(403).json({
+            message: "User already has a review for this spot",
+            statusCode:404
         })
     }
 })
