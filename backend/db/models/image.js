@@ -25,10 +25,21 @@ module.exports = (sequelize, DataTypes) => {
     },
     spotId: {
       type: DataTypes.INTEGER
+    },
+    url: {
+      type: DataTypes.STRING
+    },
+    previewImage: {
+      type: DataTypes.BOOLEAN
     }
   }, {
     sequelize,
     modelName: 'Image',
+    defaultScope: {
+      attributes: {
+        exclude: ['spotId','reviewId','createdAt','updatedAt']
+      }
+    }
   });
   return Image;
 };

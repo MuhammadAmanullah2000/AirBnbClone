@@ -22,6 +22,12 @@ module.exports = {
           key: 'id'
         }
       },
+      url: {
+        type: Sequelize.STRING
+      },
+      previewImage: {
+        type: Sequelize.BOOLEAN
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

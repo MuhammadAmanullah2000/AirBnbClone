@@ -12,13 +12,15 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Spot.belongsTo(models.User, {
-        foreignKey: 'ownerId'
+        foreignKey: 'ownerId',
+        as: 'Owner'
       });
       Spot.hasMany(models.Booking, {
         foreignKey: 'spotId'
       });
       Spot.hasMany(models.Image, {
-        foreignKey: 'spotId'
+        foreignKey: 'spotId',
+        as: 'SpotImages'
       });
       Spot.hasMany(models.Review, {
         foreignKey: 'spotId'
@@ -69,10 +71,25 @@ module.exports = (sequelize, DataTypes) => {
     },
     previewImage: {
       type:DataTypes.STRING
+    },
+    numReviews: {
+      type:DataTypes.INTEGER
     }
   }, {
     sequelize,
     modelName: 'Spot',
+    defaultScope: {
+      attributes: {
+        exclude: ["previewImage","avgRating","numReviews"]
+      }
+    },
+    scopes: {
+      getById: {
+        attributes: {
+          exclude: ["previewImage"]
+        }
+      }
+    }
   });
   return Spot;
 };
