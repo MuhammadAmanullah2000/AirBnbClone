@@ -39,6 +39,13 @@ module.exports = (sequelize, DataTypes) => {
       attributes: {
         exclude: ['spotId','reviewId','createdAt','updatedAt']
       }
+    },
+    scopes: {
+      reviewImage: {
+        attributes: {
+          exclude: ['spotId','reviewId','createdAt','updatedAt','previewImage']
+        }
+      }
     }
   });
   return Image;
