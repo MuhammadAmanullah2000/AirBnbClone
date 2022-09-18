@@ -45,6 +45,36 @@ router.get('/:spotId',async (req,res) => {
 
 })
 
+router.get('/:spotId/reviews',async(req,res) => {
+        const Reviews = await Review.findAll({
+            where:{
+                spotId: req.params.spotId
+            },
+            attributes :['id','userId','spotId','review','stars','createdAt','updatedAt'],
+            include: [{
+                model: User,
+                attributes: ['id','firstName','lastName']
+            },
+            {
+                model: Image,
+                as: 'ReviewImages',
+                attributes: ['id','url']
+            }
+        ]
+
+        })
+
+        if(!Reviews.length){
+            return res.status(404).json({
+                message: "Spot couldn't be found",
+                statusCode: 404
+            })
+        }
+        return res.json({Reviews})
+
+
+})
+
 router.post('/',restoreUser,requireAuth,async (req,res) => {
     // try {
         // const ownerId = req.user.id;

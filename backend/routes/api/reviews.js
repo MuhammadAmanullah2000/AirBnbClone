@@ -4,6 +4,7 @@ const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth')
 const { User,Review,Image,Spot,Booking } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
+const { ResultWithContext } = require('express-validator/src/chain');
 
 
 const router = express.Router();
@@ -18,7 +19,7 @@ router.post('/:reviewId/images',restoreUser,requireAuth,async (req,res) => {
             }
         });
         console.log(review)
-        const newImage1 = await review.createImage(req.body)
+        const newImage1 = await review.createReviewImage(req.body)
         const newImage2 = await Image.scope('reviewImage').findByPk(newImage1.id);
         return res.json(newImage2)
 
@@ -30,6 +31,28 @@ router.post('/:reviewId/images',restoreUser,requireAuth,async (req,res) => {
     }
 
 })
+
+router.get('/current',restoreUser,requireAuth,async (req,res) =>{
+    const Reviews = await Review.findAll({
+        where:{
+            userId: req.user.id
+        },
+        attributes :['id','userId','spotId','review','stars','createdAt','updatedAt'],
+        include: [{
+            model: Spot,
+            attributes: ['id','ownerId','address','city','state','country','lat','lng','name','price','previewImage']
+        },
+        {
+            model: Image,
+            as: 'ReviewImages',
+            attributes: ['id','url']
+        }
+    ]
+
+    })
+    return res.json({Reviews})
+})
+
 
 
 
