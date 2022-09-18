@@ -4,7 +4,7 @@ const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth')
 const { User } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
-const { Spot,Image,Review } = require('../../db/models');
+const { Spot,Image,Review,Booking } = require('../../db/models');
 const { ResultWithContext } = require('express-validator/src/chain');
 
 
@@ -148,6 +148,46 @@ router.post('/:spotId/reviews',restoreUser,requireAuth,async (req,res) => {
         res.status(403).json({
             message: "User already has a review for this spot",
             statusCode:404
+        })
+    }
+})
+
+router.post('/:spotIdForBooking/bookings',restoreUser,requireAuth,async(req,res) =>{
+    const spot = await Spot.findOne({
+        where: {
+            id: req.params.spotIdForBooking,
+            ownerId: req.user.id
+        }
+    })
+    if(!spot){
+        return res.status(404).json({
+            message: "Spot couldn't be found",
+            statusCode: 404
+        })
+    }
+    try{
+        const {startDate,endDate} = req.body
+        const booking = await Booking.create({
+            spotId: req.params.spotIdForBooking,
+            userId: req.user.id,
+            startDate,
+            endDate
+        })
+        const booking1 = await Booking.findOne({
+            where:{
+                id: booking.id
+            },
+            attributes:['id','spotId','userId','startDate','endDate','createdAt','updatedAt']
+        })
+        return res.json(booking1);
+    }catch(e){
+        res.status(403).json({
+            message: "Sorry, this spot is already booked for the specified dates",
+            statusCode: 403,
+            errors: {
+                startDate: "Start date conflicts with an existing booking",
+                endDate: "End date conflicts with an existing booking"
+            }
         })
     }
 })

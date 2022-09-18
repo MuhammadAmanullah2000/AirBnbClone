@@ -25,16 +25,15 @@ module.exports = {
         }
       },
       startDate: {
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
         allowNull: false
       },
       endDate: {
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
         allowNull: false
       },
       totalPrice: {
-        type: Sequelize.INTEGER,
-        allowNull: false
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -46,7 +45,7 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
-    });
+    }).then(()=>queryInterface.addIndex('Bookings',['startDate','endDate'],{unique:true}));
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('Bookings');

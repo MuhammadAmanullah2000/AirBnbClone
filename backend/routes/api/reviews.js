@@ -53,6 +53,27 @@ router.get('/current',restoreUser,requireAuth,async (req,res) =>{
     return res.json({Reviews})
 })
 
+router.put('/:reviewId',restoreUser,requireAuth,async(req,res) => {
+    try{
+        console.log(req.params.reviewId)
+        const review = await Review.findOne({
+            where: {
+                id: req.params.reviewId,
+                userId: req.user.id
+            }
+        })
+        const review1 = review.set(req.body)
+        await review.save();
+        return res.json(review);
+
+    }catch (e){
+        res.status(404).json({
+            message: "Review couldn't be found",
+            statusCode: 404
+        })
+    }
+})
+
 
 
 
