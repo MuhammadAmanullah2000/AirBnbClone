@@ -75,6 +75,44 @@ router.get('/:spotId/reviews',async(req,res) => {
 
 })
 
+router.get('/:spotId/bookings',restoreUser,requireAuth,async(req,res)=>{
+    const spot = await Spot.findAll({
+        where: {
+            id: req.params.spotId,
+            ownerId: req.user.id
+        }
+    })
+
+    const Bookings = await Booking.findAll({
+        where:{
+            spotId: req.params.spotId
+        },
+        inlcude:{
+            moodel: User,
+            attributes: ['id','firstName','lastName']
+        }
+    })
+    if(!Bookings){
+        const spot2 = await Spot.findAll({
+            where: {
+                id: req.params.spotId
+            }
+        })
+
+        const Bookings2 = await Booking.findAll({
+            where:{
+                spotId: req.params.spotId
+            },
+            inlcude:{
+                moodel: User,
+                attributes: ['id','firstName','lastName']
+            }
+        })
+        return res.json({Bookings2})
+    }
+    return res.json({Bookings})
+})
+
 router.post('/',restoreUser,requireAuth,async (req,res) => {
     // try {
         // const ownerId = req.user.id;
@@ -147,7 +185,7 @@ router.post('/:spotId/reviews',restoreUser,requireAuth,async (req,res) => {
     }catch(e){
         res.status(403).json({
             message: "User already has a review for this spot",
-            statusCode:404
+            statusCode:403
         })
     }
 })
@@ -155,10 +193,10 @@ router.post('/:spotId/reviews',restoreUser,requireAuth,async (req,res) => {
 router.post('/:spotIdForBooking/bookings',restoreUser,requireAuth,async(req,res) =>{
     const spot = await Spot.findOne({
         where: {
-            id: req.params.spotIdForBooking,
-            ownerId: req.user.id
+            id: req.params.spotIdForBooking
         }
     })
+    console.log(spot)
     if(!spot){
         return res.status(404).json({
             message: "Spot couldn't be found",
