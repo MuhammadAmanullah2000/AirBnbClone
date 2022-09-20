@@ -11,8 +11,23 @@ const { ResultWithContext } = require('express-validator/src/chain');
 const router = express.Router();
 
 router.get('/',async (req,res)=>{
-    const spots = await Spot.findAll()
-    res.json({spots});
+    let { page, size } = req.query;
+    let limit, offset;
+     if(!page && !size){
+        const Spots = await Spot.findAll()
+        res.json({Spots});
+     }
+     page = Number(page);
+     size = Number(size);
+     if(page >= 1 && size >= 1){
+        limit = size;
+        offset = size * (page -1)
+     }
+    const Spots = await Spot.findAll({
+        limit : size,
+        offset : size * (page -1)
+    })
+    res.json({Spots,page,size});
 });
 
 router.get('/current',restoreUser,requireAuth,async (req,res) => {
