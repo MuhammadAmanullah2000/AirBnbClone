@@ -76,37 +76,37 @@ router.get('/:spotId/reviews',async(req,res) => {
 })
 
 router.get('/:spotId/bookings',restoreUser,requireAuth,async(req,res)=>{
-    const spot = await Spot.findAll({
+
+    const spot2 = await Spot.findAll({
         where: {
-            id: req.params.spotId,
-            ownerId: req.user.id
+            id: req.params.spotId
         }
     })
 
+    if(!spot2.length){
+        return res.status(404).json({
+            message: "Spot couldn't be found",
+            statusCode: 404
+        })
+    }
     const Bookings = await Booking.findAll({
         where:{
-            spotId: req.params.spotId
+            spotId: req.params.spotId,
+            userId:req.user.id
         },
+        attributes: ['id','spotId','userId','startDate','endDate','createdAt','updatedAt'],
         inlcude:{
             moodel: User,
             attributes: ['id','firstName','lastName']
         }
     })
     if(!Bookings){
-        const spot2 = await Spot.findAll({
-            where: {
-                id: req.params.spotId
-            }
-        })
 
         const Bookings2 = await Booking.findAll({
             where:{
                 spotId: req.params.spotId
             },
-            inlcude:{
-                moodel: User,
-                attributes: ['id','firstName','lastName']
-            }
+            attributes: ['spotId','startDate','endDate']
         })
         return res.json({Bookings2})
     }
