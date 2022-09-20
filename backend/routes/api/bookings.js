@@ -22,4 +22,40 @@ router.get('/current',restoreUser,requireAuth,async(req,res)=>{
     })
     return res.json({Bookings});
 })
+
+router.put('/:bookingId',restoreUser,requireAuth,async(req,res) => {
+    try{
+        const booking = await Booking.findOne({
+            where: {
+                id: req.params.bookingId,
+                userId: req.user.id
+            }
+        })
+        const booking1 = booking.set(req.body)
+        await booking.save()
+        return res.json(booking)
+
+    }catch (e){
+        res.status(404).json({
+            message: "Booking couldn't be found",
+            statusCode: 404
+        })
+    }
+})
+
+router.delete('/:bookingId',restoreUser,requireAuth,async(req,res) => {
+        const booking = await Booking.findByPk(req.params.bookingId);
+        if(!booking){
+            return res.status(404).json({
+                message: "Booking couldn't be found",
+                statusCode: 404
+            })
+        }
+        await booking.destroy();
+        return res.json({
+            message: "Successfully deleted",
+            statusCode: 200
+        })
+    }
+)
 module.exports = router;

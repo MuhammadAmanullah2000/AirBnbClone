@@ -42,6 +42,11 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Booking',
+    defaultScope: {
+      attributes: {
+        exclude: ["totalPrice"]
+      }
+    }
   });
   return Booking;
 };
