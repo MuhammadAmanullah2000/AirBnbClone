@@ -86,7 +86,7 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'Spot',
     defaultScope: {
       attributes: {
-        exclude: ["previewImage","avgRating","numReviews"]
+        exclude: ["avgRating","numReviews"]
       }
     },
     scopes: {

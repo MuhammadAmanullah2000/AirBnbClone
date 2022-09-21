@@ -40,12 +40,16 @@ router.get('/current',restoreUser,requireAuth,async (req,res) =>{
         attributes :['id','userId','spotId','review','stars','createdAt','updatedAt'],
         include: [{
             model: Spot,
-            attributes: ['id','ownerId','address','city','state','country','lat','lng','name','price','previewImage']
+            attributes: ['id','ownerId','address','city','state','country','lat','lng','name','price']
         },
         {
             model: Image,
             as: 'ReviewImages',
             attributes: ['id','url']
+        },
+        {
+            model: User,
+            attributes: ['id','firstName','lastName']
         }
     ]
 

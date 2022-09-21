@@ -136,7 +136,12 @@ router.post('/',restoreUser,requireAuth,async (req,res) => {
         const spott = await Spot.create({
             ownerId:req.user.id,address,city,state,country,lat,lng,name,description,price
         });
-        const spott2 = await Spot.findByPk(spott.id);
+        const spott2 = await Spot.findOne({
+            where: {
+                id: spott.id
+            },
+            attributes: ['id','ownerId','address','city','state','country','lat','lng','name','description','price','createdAt','updatedAt']
+        });
         return res.status(201).json(spott2)
     // } catch (e){
     //     res.status(400).json({
@@ -218,6 +223,12 @@ router.post('/:spotIdForBooking/bookings',restoreUser,requireAuth,async(req,res)
             statusCode: 404
         })
     }
+    if (spot.ownerId === req.user.id){
+        res.status(401).json({
+            message: "can't book spot belongs to owner",
+            key: 401
+        })
+    }
     try{
         const {startDate,endDate} = req.body
         const booking = await Booking.create({
@@ -260,7 +271,13 @@ router.put('/:spotId',restoreUser,requireAuth,async (req,res) =>{
             address,city,state,country,lat,lng,name,description,price
         })
         spot = await spot.save();
-        return res.json(spot);
+        let spott = await Spot.findOne({
+            where: {
+                id: spot.id
+            },
+            attributes: ['id','ownerId','address','city','state','country','lat','lng','name','description','price','createdAt','updatedAt']
+        })
+        res.json(spott)
 
     }catch (e){
         res.status(404).json({
