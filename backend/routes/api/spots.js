@@ -15,7 +15,7 @@ router.get('/',async (req,res)=>{
     let limit, offset;
      if(!page && !size){
         const Spots = await Spot.findAll()
-        res.json({Spots});
+        return res.json({Spots});
      }
      page = Number(page);
      size = Number(size);
@@ -27,7 +27,7 @@ router.get('/',async (req,res)=>{
         limit : size,
         offset : size * (page -1)
     })
-    res.json({Spots,page,size});
+    return res.json({Spots,page,size});
 });
 
 router.get('/current',restoreUser,requireAuth,async (req,res) => {
@@ -167,10 +167,25 @@ router.post('/',restoreUser,requireAuth,async (req,res) => {
 
 router.post('/:spotId/images',restoreUser,requireAuth,async (req,res) => {
     try{
-        const spott3 = await Spot.findByPk(req.params.spotId);
+        let spott3 = await Spot.findByPk(req.params.spotId);
         const { url,previewImage } = req.body
         const newImage = await spott3.createSpotImage({url,previewImage})
         const newImage2 = await Image.findByPk(newImage.id);
+        if(previewImage){
+            const spotRows = await Spot.update(
+                {
+                    previewImage:url
+                },
+                {
+                    where: { id: req.params.spotId },
+                }
+                );
+
+            }
+        // await Spot.upsert({
+        //     id: req.params.spotId,
+        //     previewImage
+        // })
         return res.json(newImage2);
     }catch (e){
         res.status(404).json({

@@ -13,7 +13,7 @@ const spots = [
       description:'Excellent comfort',
       price:45,
       avgRating:4.2,
-      previewImage:'good url'
+      previewImage: 'good url'
   },
   {   ownerId:2,
       address:'46 Block B',
