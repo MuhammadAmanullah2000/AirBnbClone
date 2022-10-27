@@ -37,6 +37,7 @@ const updateSpot = (spot) => {
 export const getAllSpots = () => async (dispatch) => {
     const response = await fetch("api/spots");
     const data = await response.json();
+    // console.log(data.Spots)
     dispatch(getSpots(data.Spots));
     return response;
 }
@@ -44,13 +45,13 @@ export const getAllSpots = () => async (dispatch) => {
 // export const createASpot = () => aysnc (dispatch) => {
 //     cosnt {}
 // }
-const initialState =  { allSpots: null }
+const initialState =  {}
 const spotReducer = (state = initialState,action) => {
     let newState;
     switch (action.type) {
         case GET_SPOTS:
             newState = Object.assign({},state)
-            console.log(action.payload.Spots)
+            // console.log(action.payload.Spots)
             action.payload.map(element => {
                 newState[element.id] = element
             });

@@ -6,11 +6,19 @@ import './Spots.css';
 
 function AllSpots(){
     const dispatch = useDispatch();
-    const spotAll = dispatch(getAllSpots())
+    dispatch(getAllSpots())
+    const currentStore = useSelector((state) => Object.values(state.spots))
+    let imageArr = [];
+    currentStore.forEach((ele,i)=>{
+        imageArr[i] = ele.image
+    })
+    console.log(imageArr)
 
     return (
         <div>
-            {spotAll}
+            {imageArr.forEach(el =>(
+                <img src={el} alt='image not uploaded'/>
+            ))}
         </div>
     )
 
