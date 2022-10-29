@@ -139,8 +139,8 @@ function SpotById() {
                 onChange={e => setImage(e.target.value)}
                 />
             </label>
-            <button>Update</button>
-            <input type="submit" value={'delete'}/>
+            <input type="submit" name="button_1" value={'update'}/>
+            <input type="submit" name="button_2" value={'delete'}/>
         </form>
         )
     }

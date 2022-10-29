@@ -14,7 +14,14 @@ function AllSpots(){
     useEffect(()=>{
         dispatch(getAllSpots())
     },[dispatch])
+    const user = useSelector((state) => state.session.user)
+    console.log(user)
+    const spots2 = useSelector((state) => state.spots)
+    console.log(spots2)
+    // const spots3 = useSelector((state) => Object.keys(state.spots))
+    // console.log(spots3)
     const currentStore = useSelector((state) => Object.values(state.spots))
+    console.log(currentStore)
     let sppotName = [];
     currentStore.map((ele,i) =>{
         sppotName[i] = ele.name
@@ -28,6 +35,20 @@ function AllSpots(){
     const showSpotDetails = (index) => {
         history.push(`/spots/${index}`)
     }
+
+    
+    // if(user.id === ){
+    //     return (
+    //         <div>
+    //         {imageArr.map((el,i) =>(
+    //             <div>
+    //             <img src={el} alt='image not uploaded'/>
+    //             <button onClick={()=> showSpotDetails(i)}>{sppotName[i]}</button>
+    //             </div>
+    //         ))}
+    //     </div>
+    //     )
+    // }
 
     return (
         <div>
