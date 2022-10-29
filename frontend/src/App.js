@@ -6,7 +6,8 @@ import SignUpFormPage from "./components/SignUpFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import AllSpots from "./components/Spots/SpotsShow";
-import SpotById from "./components/Spots/spotById";
+import SpotById from "./components/Spots/SpotById";
+import SpotForm from "./components/Spots/SpotForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,6 +21,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route path="/spots/create">
+            <SpotForm />
+          </Route>
           <Route path="/spots/:spotId">
             <SpotById />
           </Route>

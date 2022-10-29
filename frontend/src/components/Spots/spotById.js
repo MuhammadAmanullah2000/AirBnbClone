@@ -7,15 +7,22 @@ function SpotById() {
     const idNo = useParams();
     console.log(idNo.spotId)
     const spots = useSelector((state)=>Object.values(state.spots))
-    const spotArr = spots[idNo.spotId]
-    const details = []
-    spotArr.map((el,i))
-    console.log(spotArr)
+    const spotObj = spots[idNo.spotId]
+    const spotKeys = Object.keys(spotObj).slice(2,11)
+    const details = [];
+    const spotValues = Object.values(spotObj).slice(2,11)
+
+    console.log(spotObj)
+    console.log(spotKeys)
+    console.log(spotValues)
     return (
         <div>
-            {/* {spotArr.map((el,i)=>(
-                <p>{el}</p>
-            ))} */}
+            {spotKeys.map((el,i)=>(
+                <div>
+                <span>{el}:  </span>
+                <span>{spotValues[i]}:  </span>
+                </div>
+            ))}
         </div>
     )
 }

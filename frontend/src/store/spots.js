@@ -42,9 +42,33 @@ export const getAllSpots = () => async (dispatch) => {
     return response;
 }
 
-// export const createASpot = () => aysnc (dispatch) => {
-//     cosnt {}
-// }
+export const createASpot = (spot) => async (dispatch) => {
+    const {ownerId,address,city,state,country,lat,lng,name,description,price,avgRating,previewImage,image} = spot;
+    const response = await csrfFetch("/api/spots",{
+        method: "POST",
+        body: JSON.stringify({
+            ownerId,
+            address,
+            city,
+            state,
+            country,
+            lat,
+            lng,
+            name,
+            description,
+            price,
+            avgRating,
+            previewImage,
+            image
+        }),
+    });
+    const data = await response.json();
+    console.log(data);
+    console.log(response);
+    dispatch(addSpot(data));
+    return response;
+
+}
 const initialState =  {}
 const spotReducer = (state = initialState,action) => {
     let newState;
@@ -57,7 +81,8 @@ const spotReducer = (state = initialState,action) => {
             });
             return newState
         case ADD_SPOT:
-            newState = [...newState,action.payload]
+            newState = Object.assign({},state)
+            // newState[action.payload.Spot.id] =
             return newState;
         case UPDATE_SPOT:
             newState = [...newState,action.payload]
