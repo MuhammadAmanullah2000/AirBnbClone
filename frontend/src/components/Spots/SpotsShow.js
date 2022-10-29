@@ -43,3 +43,4 @@ function AllSpots(){
 }
 
 export default AllSpots;
+// newState[action.payload.id] = action.payload

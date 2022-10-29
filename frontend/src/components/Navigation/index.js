@@ -5,6 +5,7 @@ import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import AllSpots from '../Spots/SpotsShow';
 import { useHistory } from 'react-router-dom';
+import UpdatingSpot from '../Spots/UpdateSpot';
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -15,6 +16,9 @@ function Navigation({ isLoaded }){
   function createASpot(){
     history.push('/spots/create')
   }
+  // function editing(){
+  //   history.push('/spots/update')
+  // }
 
   let sessionLinks;
   if (sessionUser) {
@@ -23,6 +27,7 @@ function Navigation({ isLoaded }){
       <ProfileButton user={sessionUser} />
       <button onClick={showAllSpots}>All Spots</button>
       <button onClick={createASpot}>Make a new spot</button>
+      {/* <button onClick={editing}>Update</button> */}
       </>
     );
   } else {

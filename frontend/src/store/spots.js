@@ -70,8 +70,8 @@ export const createASpot = (spot) => async (dispatch) => {
 }
 
 export const updateASpot = (spot) => async (dispatch) => {
-    const {ownerId,address,city,state,country,lat,lng,name,description,price,avgRating,previewImage,image} = spot;
-    const response = await csrfFetch("/api/spots/:spotId",{
+    const {id1,ownerId,address,city,state,country,lat,lng,name,description,price,avgRating,previewImage,image} = spot;
+    const response = await csrfFetch(`/api/spots/${id1}`,{
         method: "PUT",
         body: JSON.stringify({
             ownerId,
@@ -92,7 +92,7 @@ export const updateASpot = (spot) => async (dispatch) => {
     const data = await response.json();
     console.log(data);
     console.log(response);
-    dispatch(addSpot(data));
+    dispatch(updateSpot(data));
     return response;
 }
 const initialState =  {}
@@ -108,10 +108,14 @@ const spotReducer = (state = initialState,action) => {
             return newState
         case ADD_SPOT:
             newState = Object.assign({},state)
-            // newState[action.payload.Spot.id] =
+            console.log(action.payload.id)
+            newState[action.payload.id] = action.payload
+            console.log(newState)
+
             return newState;
         case UPDATE_SPOT:
             newState = Object.assign({},state)
+            newState[action.payload.id] = action.payload
             return newState;
         case DELETE_SPOT:
             delete newState[action.payload.id]

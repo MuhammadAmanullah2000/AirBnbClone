@@ -10,18 +10,18 @@ const SpotForm = () => {
     const history = useHistory();
     const sessionUser = useSelector((state) => state.session.user)
     // console.log(sessionUser.id)
-    const [address,setAddress] = useState();
-    const [city,setCity] = useState();
-    const [state,setState] = useState();
-    const [country,setCountry] = useState();
-    const [lat,setLat] = useState();
-    const [lng,setLng] = useState();
-    const [name,setName] = useState();
-    const [description,setDescription] = useState();
-    const [price,setPrice] = useState();
-    const [avgRating,setAvgRating] = useState();
-    const [previewImage,setPreviewImage] = useState();
-    const [image,setImage] = useState();
+    const [address,setAddress] = useState("");
+    const [city,setCity] = useState("");
+    const [state,setState] = useState("");
+    const [country,setCountry] = useState("");
+    const [lat,setLat] = useState(0);
+    const [lng,setLng] = useState(0);
+    const [name,setName] = useState("");
+    const [description,setDescription] = useState("");
+    const [price,setPrice] = useState(0);
+    const [avgRating,setAvgRating] = useState(0);
+    const [previewImage,setPreviewImage] = useState("");
+    const [image,setImage] = useState("");
 
     if(!sessionUser) return (
         <Redirect to="/login"/>
@@ -32,7 +32,7 @@ const SpotForm = () => {
         e.preventDefault();
         const spot = {ownerId,address,city,state,country,lat,lng,name,description,price,avgRating,previewImage,image};
         dispatch(createASpot(spot))
-        
+
     }
     // useEffect(()=>{
     //     dispatch(createASpot())
