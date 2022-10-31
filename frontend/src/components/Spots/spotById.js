@@ -5,6 +5,7 @@ import {useState} from 'react'
 import {updateASpot} from "../../store/spots"
 // import {useForm} from "react-hook-form"
 import {deleteASpot} from "../../store/spots"
+import BookingForm from "../Booking/BookingForm"
 
 
 function SpotById() {
@@ -12,9 +13,9 @@ function SpotById() {
     const dispatch = useDispatch();
     const idNo = useParams();
     console.log(idNo)
-    if(!idNo.spotId){
-        history.push('/')
-    }
+    // if(!idNo.spotId){
+    //     history.push('/')
+    // }
     const id = idNo.spotId
     console.log(id)
     const store = useSelector((state) => state);
@@ -68,11 +69,24 @@ function SpotById() {
 
     const handleSubmit = (e) => {
         console.log(e.nativeEvent.submitter.value,"vvjyjk")
-        if(e.nativeEvent.submitter.value === "update"){
+      if(e.nativeEvent.submitter.value === "CNB"){
+        e.preventDefault();
+        console.log(e.nativeEvent.submitter.value,"ABFBISJ");
+        history.push(`/bookings/create`)
+
+    }
+        else if(e.nativeEvent.submitter.value === "update"){
             e.preventDefault();
             const spot = {id1,ownerId,address,city,state,country,lat,lng,name,description,price,avgRating,previewImage,image};
             dispatch(updateASpot(spot))
-        }else{
+        }
+        // }else if(e.nativeEvent.submitter.value === "createNewBooking"){
+        //     e.preventDefault();
+        //     console.log(e.nativeEvent.submitter.value);
+        //     history.push(`/bookings/create`)
+
+        // }
+        else{
             e.preventDefault();
             console.log("DELETING");
             const spot = {id1,ownerId,address,city,state,country,lat,lng,name,description,price,avgRating,previewImage,image};
@@ -95,6 +109,7 @@ function SpotById() {
 
         }else if(User!==ownerId){
             return (
+                <>
                 <div>
                     {spotKeys.map((el,i)=>(
                         <div>
@@ -103,6 +118,10 @@ function SpotById() {
                         </div>
                     ))}
                 </div>
+                <div>
+                <input type="submit" value={"CNB"}/>
+                </div>
+                </>
             )
     }else if(User === ownerId){
         return (

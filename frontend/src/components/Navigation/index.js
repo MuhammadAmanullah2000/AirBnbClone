@@ -16,6 +16,12 @@ function Navigation({ isLoaded }){
   function createASpot(){
     history.push('/spots/create')
   }
+  // function createABooking(){
+  //   history.push('/bookings/create')
+  // }
+  function showAllBookings(){
+    history.push('bookings/current')
+  }
   // function editing(){
   //   history.push('/spots/update')
   // }
@@ -27,6 +33,8 @@ function Navigation({ isLoaded }){
       <ProfileButton user={sessionUser} />
       <button onClick={showAllSpots}>All Spots</button>
       <button onClick={createASpot}>Make a new spot</button>
+      {/* <button onClick={createABooking}>Make a new booking</button> */}
+      <button onClick={showAllBookings}>Show All Bookings</button>
       {/* <button onClick={editing}>Update</button> */}
       </>
     );

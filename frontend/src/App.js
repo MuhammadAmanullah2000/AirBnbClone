@@ -9,6 +9,8 @@ import AllSpots from "./components/Spots/SpotsShow";
 import SpotById from "./components/Spots/SpotById";
 import SpotForm from "./components/Spots/SpotForm";
 import UpdatingSpot from "./components/Spots/UpdateSpot";
+import BookingForm from "./components/Booking/BookingForm";
+import AllBookings from "./components/Booking/BookingShow";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,6 +24,12 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route path="/bookings/create">
+            <BookingForm />
+          </Route>
+          <Route path="/bookings/current">
+            <AllBookings />
+          </Route>
           <Route path="/spots/create">
             <SpotForm />
           </Route>
