@@ -1,20 +1,43 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useHistory, useParams } from "react-router-dom";
 import {useDispatch, useSelector} from 'react-redux'
 import {useState} from 'react'
 import {updateASpot} from "../../store/spots"
+// import {useForm} from "react-hook-form"
+import {deleteASpot} from "../../store/spots"
 
 
 function SpotById() {
+    const history = useHistory();
     const dispatch = useDispatch();
     const idNo = useParams();
+    console.log(idNo)
+    if(!idNo.spotId){
+        history.push('/')
+    }
     const id = idNo.spotId
-    // console.log(id)
+    console.log(id)
     const store = useSelector((state) => state);
-    console.log(store)
-    const User = useSelector((state) => state.session.user.id)
-    console.log(User)
-    const spots = useSelector((state)=>Object.values(state.spots))
+    console.log(store.spots)
+    // if(store.session){
+        //     const User = useSelector((state) => state.session.user.id)
+        //     console.log(User)
+
+        // }
+        let User=100;
+        if (store.session.user){
+            User = store.session.user.id
+            console.log(User)
+        }
+        const spots = useSelector((state)=>Object.values(state.spots))
+        console.log(spots[id])
+        // if(spots[id]===undefined){
+        //     return(
+        //         <div>
+        //             {history.push('/')}
+        //         </div>
+        //     )
+        // }
     const spotObj = spots[idNo.spotId]
 
     const id1 = spotObj.id
@@ -34,13 +57,54 @@ function SpotById() {
     const [previewImage,setPreviewImage] = useState(spotObj.previewImage);
     const [image,setImage] = useState(spotObj.image);
 
+    const spotKeys = Object.keys(spotObj).slice(2,11)
+    const details = [];
+    const spotValues = Object.values(spotObj).slice(2,11)
+
+    console.log(spotObj)
+    console.log(spotKeys)
+    console.log(spotValues)
+
+
     const handleSubmit = (e) => {
-        console.log(e,"this is the event")
-        e.preventDefault();
-        const spot = {id1,ownerId,address,city,state,country,lat,lng,name,description,price,avgRating,previewImage,image};
-        dispatch(updateASpot(spot))
+        console.log(e.nativeEvent.submitter.value,"vvjyjk")
+        if(e.nativeEvent.submitter.value === "update"){
+            e.preventDefault();
+            const spot = {id1,ownerId,address,city,state,country,lat,lng,name,description,price,avgRating,previewImage,image};
+            dispatch(updateASpot(spot))
+        }else{
+            e.preventDefault();
+            console.log("DELETING");
+            const spot = {id1,ownerId,address,city,state,country,lat,lng,name,description,price,avgRating,previewImage,image};
+            const awnser = dispatch(deleteASpot(spot));
+
+        }
     }
-    if(User === ownerId){
+
+    if(store.session.user===undefined){
+        return (
+            <div>
+                {spotKeys.map((el,i)=>(
+                    <div>
+                    <span>{el}:  </span>
+                    <span>{spotValues[i]}:  </span>
+                    </div>
+                ))}
+            </div>
+        )
+
+        }else if(User!==ownerId){
+            return (
+                <div>
+                    {spotKeys.map((el,i)=>(
+                        <div>
+                        <span>{el}:  </span>
+                        <span>{spotValues[i]}:  </span>
+                        </div>
+                    ))}
+                </div>
+            )
+    }else if(User === ownerId){
         return (
             <form onSubmit={handleSubmit}>
             <label>
@@ -139,28 +203,14 @@ function SpotById() {
                 onChange={e => setImage(e.target.value)}
                 />
             </label>
-            <input type="submit" name="button_1" value={'update'}/>
-            <input type="submit" name="button_2" value={'delete'}/>
+            <input type="submit" value={'update'}/>
+            {/* <input type="submit" name="deleteButton" value={'delete'}/> */}
+            <button>Delete</button>
         </form>
         )
-    }
-    const spotKeys = Object.keys(spotObj).slice(2,11)
-    const details = [];
-    const spotValues = Object.values(spotObj).slice(2,11)
 
-    console.log(spotObj)
-    console.log(spotKeys)
-    console.log(spotValues)
-    return (
-        <div>
-            {spotKeys.map((el,i)=>(
-                <div>
-                <span>{el}:  </span>
-                <span>{spotValues[i]}:  </span>
-                </div>
-            ))}
-        </div>
-    )
+    }
+
 }
 
 export default SpotById;
