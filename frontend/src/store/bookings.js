@@ -28,7 +28,7 @@ const deleteBooking = (booking) => {
 }
 
 export const getAllBookings = () => async(dispatch) => {
-    const response = await csrfFetch("api/bookings/current");
+    const response = await csrfFetch("/api/bookings/current");
     const data = await response.json();
     dispatch(getBookings(data.Bookings));
     return response;
@@ -36,7 +36,8 @@ export const getAllBookings = () => async(dispatch) => {
 
 export const createABooking = (booking) => async(dispatch) => {
     const {spotId,userId,startDate,endDate} =  booking;
-    const response = await csrfFetch(`api/${spotId}/bookings`,{
+    console.log(userId)
+    const response = await csrfFetch(`/api//spots/${spotId}/bookings`,{
         method: "POST",
         body: JSON.stringify({
             spotId,
@@ -50,9 +51,16 @@ export const createABooking = (booking) => async(dispatch) => {
     return response;
 }
 
-// export const deleteBooking = (booking) => async(dispatch) => {
-//     const
-// }
+export const deleteABooking = (booking) => async(dispatch) => {
+    const {id} = booking;
+    const response = await csrfFetch(`/api/bookings/${id}`,{
+        method: "DELETE"
+    });
+    const data = await response.json();
+    console.log(data,"DATA");
+    dispatch(deleteBooking(data));
+    return response;
+}
 const initialState = {}
 const bookingReducer = (state = initialState,action) => {
     let newState;
@@ -72,7 +80,7 @@ const bookingReducer = (state = initialState,action) => {
         case DELETE_BOOKING:
             newState = Object.assign({},state)
             console.log(action.payload)
-            delete newState[action.payload.spot.id]
+            delete newState[action.payload.id]
             console.log(newState)
             return newState;
         default:

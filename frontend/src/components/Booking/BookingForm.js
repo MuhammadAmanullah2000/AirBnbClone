@@ -4,11 +4,14 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import { createABooking } from "../../store/bookings";
-const BookingForm = () => {
+import { useLocation } from "react-router-dom";
+const BookingForm = (props) => {
+    const location = useLocation();
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector((state) => state.session.user);
-    const spotId = 0
+    const spotId = location.state.detail
+    console.log(spotId)
     const userId = sessionUser.id;
     const [startDate,setStartDate] = useState(0);
     const [endDate,setEndDate] = useState(0);

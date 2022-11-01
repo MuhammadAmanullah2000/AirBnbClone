@@ -11,32 +11,32 @@ function AllSpots(){
     // const navigate = useNavigate();
     const dispatch = useDispatch();
     const history = useHistory();
-    useEffect(()=>{
-        dispatch(getAllSpots())
-    },[dispatch])
+    // useEffect(()=>{
+    //     dispatch(getAllSpots())
+    // },[dispatch])
     const user = useSelector((state) => state.session.user)
-    console.log(user)
+    // console.log(user)
     const spots2 = useSelector((state) => state.spots)
-    console.log(spots2)
+    // console.log(spots2)
     // const spots3 = useSelector((state) => Object.keys(state.spots))
     // console.log(spots3)
-    const currentStore = useSelector((state) => Object.values(state.spots))
-    console.log(currentStore)
-    let sppotName = [];
-    currentStore.map((ele,i) =>{
-        sppotName[i] = ele.name
-    })
-    let imageArr = [];
-    currentStore.map((ele,i)=>{
-        imageArr[i] = ele.image
-    })
-    console.log(imageArr)
+    const allSpots = useSelector((state) => Object.values(state.spots))
+    console.log(allSpots,"ALL SPOTS")
+    // let sppotName = [];
+    // currentStore.map((ele,i) =>{
+    //     sppotName[i] = ele.name
+    // })
+    // let imageArr = [];
+    // currentStore.map((ele,i)=>{
+    //     imageArr[i] = ele.image
+    // })
+    // console.log(imageArr)
 
-    const showSpotDetails = (index) => {
-        history.push(`/spots/${index}`)
+    const showSpotDetails = (spotId) => {
+        history.push(`/spots/${spotId}`)
     }
 
-    
+
     // if(user.id === ){
     //     return (
     //         <div>
@@ -52,10 +52,10 @@ function AllSpots(){
 
     return (
         <div>
-            {imageArr.map((el,i) =>(
+            {allSpots.map((el,i) =>(
                 <div>
-                <img src={el} alt='image not uploaded'/>
-                <button onClick={()=> showSpotDetails(i)}>{sppotName[i]}</button>
+                <img src={el.image} alt='image not uploaded'/>
+                <button onClick={()=> showSpotDetails(el.id)}>{el.name}</button>
                 </div>
             ))}
         </div>

@@ -11,15 +11,15 @@ import BookingForm from "../Booking/BookingForm"
 function SpotById() {
     const history = useHistory();
     const dispatch = useDispatch();
-    const idNo = useParams();
-    console.log(idNo)
+    const {spotId} = useParams();
+    // console.log(idNo)
     // if(!idNo.spotId){
     //     history.push('/')
     // }
-    const id = idNo.spotId
-    console.log(id)
+    const id = spotId
+    // console.log(id)
     const store = useSelector((state) => state);
-    console.log(store.spots)
+    // console.log(store.spots)
     // if(store.session){
         //     const User = useSelector((state) => state.session.user.id)
         //     console.log(User)
@@ -30,8 +30,8 @@ function SpotById() {
             User = store.session.user.id
             console.log(User)
         }
-        const spots = useSelector((state)=>Object.values(state.spots))
-        console.log(spots[id])
+        const spots = useSelector((state)=> state.spots)
+        console.log(spots[id],"current spot showing")
         // if(spots[id]===undefined){
         //     return(
         //         <div>
@@ -39,12 +39,12 @@ function SpotById() {
         //         </div>
         //     )
         // }
-    const spotObj = spots[idNo.spotId]
+    const spotObj = spots[spotId]
 
-    const id1 = spotObj.id
+    const id1 = spotObj?.id
     console.log(id1)
     console.log(spotObj)
-    const ownerId = spotObj.ownerId
+    const ownerId = spotObj?.ownerId
     const [address,setAddress] = useState(spotObj.address);
     const [city,setCity] = useState(spotObj.city);
     const [state,setState] = useState(spotObj.state);
@@ -66,17 +66,30 @@ function SpotById() {
     console.log(spotKeys)
     console.log(spotValues)
 
-
-    const handleSubmit = (e) => {
-        console.log(e.nativeEvent.submitter.value,"vvjyjk")
-      if(e.nativeEvent.submitter.value === "CNB"){
+    const handleClick = (e) => {
         e.preventDefault();
-        console.log(e.nativeEvent.submitter.value,"ABFBISJ");
-        history.push(`/bookings/create`)
-
+        // <BookingForm id1={id1} />
+        history.push({
+            pathname: '/bookings/create',
+            state: {detail:id1}
+        })
     }
+
+
+    const handleSubmit = async(e) => {
+        // console.log(e.nativeEvent.submitter.value,"vvjyjk")
+        e.preventDefault();
+
+        if(e.nativeEvent.submitter.value === "delete"){
+            console.log(e.nativeEvent.submitter.value,"ABFBISJ");
+            console.log("DELETING");
+            const spot = {id1}
+            const deletedSpot =  dispatch(deleteASpot(spot));
+            history.push('/spots')
+
+        }
         else if(e.nativeEvent.submitter.value === "update"){
-            e.preventDefault();
+            // e.preventDefault();
             const spot = {id1,ownerId,address,city,state,country,lat,lng,name,description,price,avgRating,previewImage,image};
             dispatch(updateASpot(spot))
         }
@@ -87,11 +100,7 @@ function SpotById() {
 
         // }
         else{
-            e.preventDefault();
-            console.log("DELETING");
-            const spot = {id1,ownerId,address,city,state,country,lat,lng,name,description,price,avgRating,previewImage,image};
-            const awnser = dispatch(deleteASpot(spot));
-
+            console.log("abc")
         }
     }
 
@@ -119,7 +128,7 @@ function SpotById() {
                     ))}
                 </div>
                 <div>
-                <input type="submit" value={"CNB"}/>
+                <button onClick={(e)=>handleClick(e)}>Create a booking</button>
                 </div>
                 </>
             )
@@ -224,7 +233,7 @@ function SpotById() {
             </label>
             <input type="submit" value={'update'}/>
             {/* <input type="submit" name="deleteButton" value={'delete'}/> */}
-            <button>Delete</button>
+            <input type="submit" value={'delete'}/>
         </form>
         )
 

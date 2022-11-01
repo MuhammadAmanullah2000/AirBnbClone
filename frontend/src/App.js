@@ -11,12 +11,14 @@ import SpotForm from "./components/Spots/SpotForm";
 import UpdatingSpot from "./components/Spots/UpdateSpot";
 import BookingForm from "./components/Booking/BookingForm";
 import AllBookings from "./components/Booking/BookingShow";
+import { getAllSpots } from "./store/spots";
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
-    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true))
+    dispatch(getAllSpots());
   }, [dispatch]);
 
   return (
