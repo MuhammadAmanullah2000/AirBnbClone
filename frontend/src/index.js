@@ -7,6 +7,8 @@ import App from './App';
 import configureStore from './store';
 import { restoreCSRF, csrfFetch } from './store/csrf';
 import * as sessionActions from './store/session';
+import { FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faAirbnb} from "@fortawesome/free-brands-svg-icons"
 
 const store = configureStore();
 
@@ -35,6 +37,7 @@ function Root() {
 
 ReactDOM.render(
   <React.StrictMode>
+    {/* <FontAwesomeIcon icon={faAirbnb}></FontAwesomeIcon> */}
     <Root />
   </React.StrictMode>,
   document.getElementById('root')
