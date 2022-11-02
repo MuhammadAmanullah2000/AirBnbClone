@@ -41,7 +41,7 @@ function App() {
           <Route path="/spots/:spotId">
             <SpotById />
           </Route>
-          <Route path="/spots">
+          <Route path="/">
             <AllSpots />
           </Route>
           <Route path="/login">
