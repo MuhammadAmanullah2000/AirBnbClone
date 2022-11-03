@@ -27,3 +27,39 @@
     width: 100%;
     /* background-color: yellow; */
 }
+
+.showingSpots {
+    min-height: 300px;
+    min-width: 300px;
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.makeAndUpdateSpots {
+    display: flex;
+    flex-direction: row;
+}
+
+.itemSpotsShow {
+    margin-left: 10px;
+    margin-top: 5px;
+    font-size: 15px;
+}
+
+.itemSpotsShow2 {
+    margin-left: 5px;
+    margin-top: 5px;
+    font-size: 15px;
+    /* font-size: 50px */
+}
+
+.itemSpotsShow4 {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-left:40%
+}
+.itemSpotsShow3 {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-left: 10px;
+}

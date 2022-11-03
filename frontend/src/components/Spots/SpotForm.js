@@ -40,105 +40,107 @@ const SpotForm = () => {
     // },dispatch)
 
     return (
+        <>
         <form onSubmit={handleSubmit}>
-            <label>
-                Address
-                <input
+            <label className="itemSpotsShow">
+                Address:
+                <input className="itemSpotsShow2"
                 type="text"
                 value={address}
                 onChange={e => setAddress(e.target.value)}
                 />
             </label>
-            <label>
-                City
-                <input
+            <label className="itemSpotsShow">
+                City:
+                <input className="itemSpotsShow2"
                 type="text"
                 value={city}
                 onChange={e => setCity(e.target.value)}
                 />
             </label>
-            <label>
-                State
-                <input
+            <label className="itemSpotsShow">
+                State:
+                <input className="itemSpotsShow2"
                 type="text"
                 value={state}
                 onChange={e => setState(e.target.value)}
                 />
             </label>
-            <label>
-                Country
-                <input
+            <label className="itemSpotsShow">
+                Country:
+                <input className="itemSpotsShow2"
                 type="text"
                 value={country}
                 onChange={e => setCountry(e.target.value)}
                 />
             </label>
-            <label>
-                Lat
-                <input
+            <label className="itemSpotsShow">
+                Lat:
+                <input className="itemSpotsShow2"
                 type="text"
                 value={lat}
                 onChange={e => setLat(e.target.value)}
                 />
             </label>
-            <label>
-                Lng
-                <input
+            <label className="itemSpotsShow">
+                Lng:
+                <input className="itemSpotsShow2"
                 type="text"
                 value={lng}
                 onChange={e => setLng(e.target.value)}
                 />
             </label>
-            <label>
-                Name
-                <input
+            <label className="itemSpotsShow">
+                Name:
+                <input className="itemSpotsShow2"
                 type="text"
                 value={name}
                 onChange={e => setName(e.target.value)}
                 />
             </label>
-            <label>
-                Description
-                <input
+            <label className="itemSpotsShow">
+                Description:
+                <input className="itemSpotsShow2"
                 type="text"
                 value={description}
                 onChange={e => setDescription(e.target.value)}
                 />
             </label>
-            <label>
-                Price
-                <input
+            <label className="itemSpotsShow">
+                Price:
+                <input className="itemSpotsShow2"
                 type="text"
                 value={price}
                 onChange={e => setPrice(e.target.value)}
                 />
             </label>
-            <label>
-                AvgRating
-                <input
+            <label className="itemSpotsShow">
+                AvgRating:
+                <input className="itemSpotsShow2"
                 type="text"
                 value={avgRating}
                 onChange={e => setAvgRating(e.target.value)}
                 />
             </label>
-            <label>
-                PreviewImage
-                <input
+            <label className="itemSpotsShow">
+                PreviewImage:
+                <input className="itemSpotsShow2"
                 type="text"
                 value={previewImage}
                 onChange={e => setPreviewImage(e.target.value)}
                 />
             </label>
-            <label>
-                Image
-                <input
+            <label className="itemSpotsShow">
+                Image:
+                <input className="itemSpotsShow2"
                 type="text"
                 value={image}
                 onChange={e => setImage(e.target.value)}
                 />
-            </label>
-            <input type="submit" value={'sumbit'}/>
+            </label >
+            <input className="itemSpotsShow4" type="submit" value={'sumbit'}/>
         </form>
+        </>
     )
 }
 export default SpotForm;
