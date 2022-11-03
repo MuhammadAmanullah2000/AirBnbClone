@@ -5,7 +5,7 @@ import {useState} from 'react'
 import {updateASpot} from "../../store/spots.js"
 // import {useForm} from "react-hook-form"
 import {deleteASpot} from "../../store/spots.js"
-import BookingForm from "../Booking/BookingForm.js"
+// import BookingForm from "../Booking/BookingForm.js"
 
 
 function SpotById() {
