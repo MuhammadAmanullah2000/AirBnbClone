@@ -5,7 +5,7 @@ import ProfileButton from './ProfileButton.js';
 import './Navigation.css';
 import AllSpots from '../Spots/SpotsShow.js';
 import { useHistory } from 'react-router-dom';
-import UpdatingSpot from '../Spots/UpdateSpot.js';
+// import UpdatingSpot from '../Spots/UpdateSpot.js';
 import { FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAirbnb} from "@fortawesome/free-brands-svg-icons"
 
@@ -36,7 +36,7 @@ function Navigation({ isLoaded }){
       {/* <button onClick={showAllSpots}>All Spots</button> */}
       <button className='makeSpot' onClick={createASpot}>Make a new spot</button>
       {/* <button onClick={createABooking}>Make a new booking</button> */}
-      <button className='showBookings' shoeonClick={showAllBookings}>Show All Bookings</button>
+      <button className='showBookings' onClick={showAllBookings}>Show All Bookings</button>
        <button className='airBnbButton' onClick={showAllSpots}><FontAwesomeIcon icon={faAirbnb}></FontAwesomeIcon></button>
       {/* <button onClick={editing}>Update</button> */}
       </>
