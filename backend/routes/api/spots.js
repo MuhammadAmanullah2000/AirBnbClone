@@ -132,15 +132,15 @@ router.post('/',restoreUser,requireAuth,async (req,res) => {
     // try {
         // const ownerId = req.user.id;
         // console.log(req.user.id)
-        const{ address,city,state,country,lat,lng,name,description,price } = req.body;
+        const{ address,city,state,country,lat,lng,name,description,price,avgRating,previewImage,image } = req.body;
         const spott = await Spot.create({
-            ownerId:req.user.id,address,city,state,country,lat,lng,name,description,price
+            ownerId:req.user.id,address,city,state,country,lat,lng,name,description,price,avgRating,previewImage,image
         });
         const spott2 = await Spot.findOne({
             where: {
                 id: spott.id
             },
-            attributes: ['id','ownerId','address','city','state','country','lat','lng','name','description','price','createdAt','updatedAt']
+            attributes: ['id','ownerId','address','city','state','country','lat','lng','name','description','price','avgRating','previewImage','image','createdAt','updatedAt']
         });
         return res.status(201).json(spott2)
     // } catch (e){
@@ -256,7 +256,7 @@ router.post('/:spotIdForBooking/bookings',restoreUser,requireAuth,async(req,res)
             where:{
                 id: booking.id
             },
-            attributes:['id','spotId','userId','startDate','endDate','createdAt','updatedAt']
+            attributes:['id','spotId','userId','startDate','endDate']
         })
         return res.json(booking1);
     }catch(e){
@@ -274,7 +274,7 @@ router.post('/:spotIdForBooking/bookings',restoreUser,requireAuth,async(req,res)
 router.put('/:spotId',restoreUser,requireAuth,async (req,res) =>{
     try{
         console.log(req.params.id)
-        const {address,city,state,country,lat,lng,name,description,price} = req.body
+        const {address,city,state,country,lat,lng,name,description,price,avgRating,previewImage,image} = req.body
         let spot = await Spot.findOne({
             where: {
                 id: req.params.spotId,
@@ -283,14 +283,14 @@ router.put('/:spotId',restoreUser,requireAuth,async (req,res) =>{
         })
         console.log(spot)
         spot.set({
-            address,city,state,country,lat,lng,name,description,price
+            address,city,state,country,lat,lng,name,description,price,avgRating,previewImage,image
         })
         spot = await spot.save();
         let spott = await Spot.findOne({
             where: {
                 id: spot.id
             },
-            attributes: ['id','ownerId','address','city','state','country','lat','lng','name','description','price','createdAt','updatedAt']
+            attributes: ['id','ownerId','address','city','state','country','lat','lng','name','description','price','avgRating','previewImage','image','createdAt','updatedAt']
         })
         res.json(spott)
 
@@ -303,6 +303,7 @@ router.put('/:spotId',restoreUser,requireAuth,async (req,res) =>{
 })
 
 router.delete('/:spotId',restoreUser,requireAuth,async(req,res) => {
+    console.log("DELETED----------------------------")
     const spot = await Spot.findByPk(req.params.spotId);
     if(!spot){
         return res.status(404).json({
@@ -311,10 +312,7 @@ router.delete('/:spotId',restoreUser,requireAuth,async(req,res) => {
         })
     }
     await spot.destroy();
-    return res.json({
-        message: "Successfully deleted",
-        statusCode: 200
-    })
+    return res.json(spot)
 }
 )
 module.exports = router;

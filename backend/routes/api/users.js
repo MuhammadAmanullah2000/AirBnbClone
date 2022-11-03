@@ -42,6 +42,7 @@ router.post(
         user,
       });
     } catch (e){
+      console.log(e.errors)
       e.status = 403
       e.message = "User already exists"
       return res.status(403).json({

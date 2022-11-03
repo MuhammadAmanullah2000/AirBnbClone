@@ -80,13 +80,16 @@ module.exports = (sequelize, DataTypes) => {
     },
     numReviews: {
       type:DataTypes.INTEGER
+    },
+    image: {
+      type:DataTypes.STRING
     }
   }, {
     sequelize,
     modelName: 'Spot',
     defaultScope: {
       attributes: {
-        exclude: ["avgRating","numReviews"]
+        exclude: ["numReviews"]
       }
     },
     scopes: {

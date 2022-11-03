@@ -13,7 +13,8 @@ const spots = [
       description:'Excellent comfort',
       price:45,
       avgRating:4.2,
-      previewImage: 'good url'
+      previewImage: 'good url',
+      image:'https://imageio.forbes.com/specials-images/imageserve/5e05ae84e961e1000739fd8f/A-beautiful-luxury-Airbnb-bedroom-with-a-balcony-in-Punta-Mita--Mexico-/960x0.jpg?format=jpg&width=960'
   },
   {   ownerId:2,
       address:'46 Block B',
@@ -26,7 +27,8 @@ const spots = [
       description:'Very comfortable',
       price:35,
       avgRating:3.2,
-      previewImage:'avg url'
+      previewImage:'avg url',
+      image:'https://a0.muscache.com/pictures/5fcbb0af-ace5-47bb-b251-eba6ada69681.jpg'
 },
 {
       ownerId:3,
@@ -40,7 +42,8 @@ const spots = [
       description:'Comfortable',
       price:25,
       avgRating:2.2,
-      previewImage:'bad url'
+      previewImage:'bad url',
+      image:'https://furnishrcdn-134f8.kxcdn.com/wp-content/uploads/bedroom4-2.jpg'
 }
 ]
 module.exports = {
@@ -58,7 +61,8 @@ module.exports = {
         description,
         price,
         avgRating,
-        previewImage
+        previewImage,
+        image
       } = diffSpots
       const foundUser = await User.findOne({
         where: { id: diffSpots.ownerId }
@@ -75,6 +79,7 @@ module.exports = {
         price,
         avgRating,
         previewImage,
+        image,
         ownerId: foundUser.id
       });
     }
