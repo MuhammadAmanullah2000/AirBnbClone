@@ -2,7 +2,7 @@
   "name": "AirBnbBack",
   "version": "1.0.0",
   "engines" : {
-    "node" : "16.x"
+    "node" : "16.18.0"
   },
   "description": "## Database Schema Design",
   "main": "index.js",
