@@ -85,7 +85,7 @@ function SpotById() {
             console.log("DELETING");
             const spot = {id1}
             const deletedSpot =  dispatch(deleteASpot(spot));
-            history.push('/spots')
+            history.push('/')
 
         }
         else if(e.nativeEvent.submitter.value === "update"){

@@ -1,0 +1,16 @@
+.headersBookings {
+    color: purple;
+}
+
+.itemsBookings {
+    color: green
+}
+
+.deleteBookings {
+    color: black;
+}
+
+.deleteBookings:hover {
+    background-color: blue;
+    cursor: pointer;
+}

@@ -32,12 +32,12 @@ function Navigation({ isLoaded }){
   if (sessionUser) {
     sessionLinks = (
       <>
-      <ProfileButton user={sessionUser} />
       {/* <button onClick={showAllSpots}>All Spots</button> */}
+       <button className='airBnbButton' onClick={showAllSpots}><FontAwesomeIcon icon={faAirbnb}></FontAwesomeIcon>  airbnb</button>
       <button className='makeSpot' onClick={createASpot}>Make a new spot</button>
       {/* <button onClick={createABooking}>Make a new booking</button> */}
-      <button className='showBookings' onClick={showAllBookings}>Show All Bookings</button>
-       <button className='airBnbButton' onClick={showAllSpots}><FontAwesomeIcon icon={faAirbnb}></FontAwesomeIcon></button>
+      <button className='showBookings'onClick={showAllBookings}>Show All Bookings</button>
+      <ProfileButton user={sessionUser} />
       {/* <button onClick={editing}>Update</button> */}
       </>
     );
@@ -46,13 +46,14 @@ function Navigation({ isLoaded }){
       <>
         <NavLink to="/login">Log In</NavLink>
         <NavLink to="/signup">Sign Up</NavLink>
-        <button className='airBnbButton' onClick={showAllSpots}><FontAwesomeIcon icon={faAirbnb}></FontAwesomeIcon></button>
+        <button onClick={showAllSpots}><FontAwesomeIcon icon={faAirbnb}></FontAwesomeIcon></button>
       </>
     );
   }
 
   return (
     <div className='box'>
+
     <ul>
       <li>
         {/* <NavLink exact to="/">Home</NavLink> */}

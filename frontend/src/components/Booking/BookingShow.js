@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 import { useHistory } from 'react-router-dom'
 import { getAllBookings } from "../../store/bookings.js";
 import { deleteABooking } from "../../store/bookings.js";
+import './Bookings.css'
 
 function AllBookings() {
     const dispatch = useDispatch();
@@ -28,11 +29,11 @@ function AllBookings() {
         <div>
             {allBookings.map((el,i) => (
                 <div>
-                    <h2>Booking{i+1}</h2>
-                    <p>Place:  {allSpots[i].name}</p>
-                    <p>From:  {el.startDate}</p>
-                    <p>Till:  {el.endDate}</p>
-                    <button onClick={(e)=>handleClick(el)}>Delete booking</button>
+                    <h2 className="headersBookings">Booking{i+1}:</h2>
+                    <p className="itemsBookings">Place:  {allSpots[i].name}</p>
+                    <p className="itemsBookings">From:  {el.startDate}</p>
+                    <p className="itemsBookings">Till:  {el.endDate}</p>
+                    <button className="deleteBookings" onClick={(e)=>handleClick(el)}>Delete booking</button>
                 </div>
             ))}
         </div>

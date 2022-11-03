@@ -51,11 +51,11 @@ function AllSpots(){
     // }
 
     return (
-        <div>
+        <div className="spotBox">
             {allSpots.map((el,i) =>(
                 <div>
-                <img src={el.image} alt='image not uploaded'/>
-                <button onClick={()=> showSpotDetails(el.id)}>{el.name}</button>
+                <img className="images" src={el.image} alt='image not uploaded'/>
+                <button className="nameWithImage" onClick={()=> showSpotDetails(el.id)} >{el.name}</button>
                 </div>
             ))}
         </div>
