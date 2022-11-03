@@ -1,7 +1,7 @@
 import React,{ useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import * as sessionActions from "../../store/session";
-import { getAllSpots } from "../../store/spots";
+import * as sessionActions from "../../store/session.js";
+import { getAllSpots } from "../../store/spots.js";
 import './Spots.css';
 import { useEffect } from "react";
 import { Redirect } from "react-router-dom";

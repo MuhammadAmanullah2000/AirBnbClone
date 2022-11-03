@@ -1,6 +1,6 @@
 
 
-import { csrfFetch } from "./csrf";
+import { csrfFetch } from "./csrf.js";
 
 const GET_BOOKINGS = 'booking/getBookings';
 const ADD_BOOKING = 'booking/addBooking';

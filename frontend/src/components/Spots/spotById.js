@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import {useDispatch, useSelector} from 'react-redux'
 import {useState} from 'react'
-import {updateASpot} from "../../store/spots"
+import {updateASpot} from "../../store/spots.js"
 // import {useForm} from "react-hook-form"
-import {deleteASpot} from "../../store/spots"
-import BookingForm from "../Booking/BookingForm"
+import {deleteASpot} from "../../store/spots.js"
+import BookingForm from "../Booking/BookingForm.js"
 
 
 function SpotById() {

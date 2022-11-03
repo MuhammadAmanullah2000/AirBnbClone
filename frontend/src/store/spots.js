@@ -1,5 +1,5 @@
 
-import { csrfFetch } from "./csrf";
+import { csrfFetch } from "./csrf.js";
 
 const GET_SPOTS = 'spot/getSpots'
 const ADD_SPOT = 'spot/addSpot';

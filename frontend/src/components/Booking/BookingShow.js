@@ -3,8 +3,8 @@ import { useDispatch,useSelector } from "react-redux";
 import { useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import { useHistory } from 'react-router-dom'
-import { getAllBookings } from "../../store/bookings";
-import { deleteABooking } from "../../store/bookings";
+import { getAllBookings } from "../../store/bookings.js";
+import { deleteABooking } from "../../store/bookings.js";
 
 function AllBookings() {
     const dispatch = useDispatch();

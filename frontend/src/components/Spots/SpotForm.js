@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { createASpot } from "../../store/spots";
+import { createASpot } from "../../store/spots.js";
 
 const SpotForm = () => {
     const dispatch = useDispatch();

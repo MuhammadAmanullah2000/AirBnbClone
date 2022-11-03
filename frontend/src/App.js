@@ -3,15 +3,14 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignUpFormPage from "./components/SignUpFormPage";
-import * as sessionActions from "./store/session";
+import * as sessionActions from "./store/session.js";
 import Navigation from "./components/Navigation";
-import AllSpots from "./components/Spots/SpotsShow";
-import SpotById from "./components/Spots/SpotById";
-import SpotForm from "./components/Spots/SpotForm";
-import UpdatingSpot from "./components/Spots/UpdateSpot";
-import BookingForm from "./components/Booking/BookingForm";
-import AllBookings from "./components/Booking/BookingShow";
-import { getAllSpots } from "./store/spots";
+import AllSpots from "./components/Spots/SpotsShow.js";
+import SpotById from "./components/Spots/SpotById.js";
+import SpotForm from "./components/Spots/SpotForm.js";
+import BookingForm from "./components/Booking/BookingForm.js";
+import AllBookings from "./components/Booking/BookingShow.js";
+import { getAllSpots } from "./store/spots.js";
 
 function App() {
   const dispatch = useDispatch();

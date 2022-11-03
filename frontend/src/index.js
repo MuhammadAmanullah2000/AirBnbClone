@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider as ReduxProvider } from 'react-redux';
 import './index.css';
-import App from './App';
+import App from './App.js';
 import configureStore from './store';
-import { restoreCSRF, csrfFetch } from './store/csrf';
-import * as sessionActions from './store/session';
+import { restoreCSRF, csrfFetch } from './store/csrf.js';
+import * as sessionActions from './store/session.js';
 import { FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAirbnb} from "@fortawesome/free-brands-svg-icons"
 

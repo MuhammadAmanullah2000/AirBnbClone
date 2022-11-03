@@ -1,11 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import ProfileButton from './ProfileButton';
+import ProfileButton from './ProfileButton.js';
 import './Navigation.css';
-import AllSpots from '../Spots/SpotsShow';
+import AllSpots from '../Spots/SpotsShow.js';
 import { useHistory } from 'react-router-dom';
-import UpdatingSpot from '../Spots/UpdateSpot';
+import UpdatingSpot from '../Spots/UpdateSpot.js';
 import { FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAirbnb} from "@fortawesome/free-brands-svg-icons"
 

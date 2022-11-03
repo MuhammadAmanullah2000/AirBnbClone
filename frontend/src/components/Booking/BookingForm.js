@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
-import { createABooking } from "../../store/bookings";
+import { createABooking } from "../../store/bookings.js";
 import { useLocation } from "react-router-dom";
 const BookingForm = (props) => {
     const location = useLocation();
