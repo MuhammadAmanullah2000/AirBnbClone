@@ -20,12 +20,12 @@ function AllBookings() {
     // const genralState = useSelector((state) => state.spots)
     // console.log(genralState)
     const allSpots = useSelector((state) => Object.values(state.spots));
-    console.log(allSpots);
+    console.log('THIS IS ALL SPOTS',allSpots);
     const allBookings = useSelector((state) => Object.values(state.bookings))
-    console.log(allBookings)
+    console.log('THIS IS ALL BOOKINGS',allBookings)
     // const spotName = allSpots[allBookings]
-    const spotName1 = allSpots.find(ele => ele.id === 2).name
-    console.log(spotName1)
+    // const spotName1 = allSpots.find(ele => ele.id === 2).name
+    // console.log(spotName1)
     // function spotName(spotId) {
     //     return spot.id === spotId;
     //   }
@@ -36,7 +36,7 @@ function AllBookings() {
     }
     return (
         <div>
-            {allBookings.map((el,i) => (
+            {user && allBookings && allSpots && allBookings.map((el,i) => (
                 <div>
                     <h2 className="headersBookings">Booking{i+1}:</h2>
                     <p className="itemsBookings">Place: {allSpots.find(ele => ele.id === el.spotId).name} </p>

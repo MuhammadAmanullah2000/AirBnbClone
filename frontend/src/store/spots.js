@@ -35,7 +35,7 @@ const updateSpot = (spot) => {
 }
 
 export const getAllSpots = () => async (dispatch) => {
-    const response = await fetch("api/spots");
+    const response = await fetch("/api/spots");
     const data = await response.json();
     // console.log(data.Spots)
     dispatch(getSpots(data.Spots));

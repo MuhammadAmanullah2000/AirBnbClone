@@ -16,7 +16,7 @@ const BookingForm = (props) => {
     const [startDate,setStartDate] = useState(0);
     const [endDate,setEndDate] = useState(0);
     if(!sessionUser) return (
-        <Redirect to ="/loging"/>
+        <Redirect to ="/login"/>
     );
 
     const handleSubmit = (e) => {
@@ -28,27 +28,27 @@ const BookingForm = (props) => {
     return (
         <div className="overallBookingForm">
 
-       <form onSubmit={handleSubmit}>
-        <label className="from">
+            <form onSubmit={handleSubmit}>
+            <label className="from">
             From:
             <input className="from1"
             type="text"
             value={startDate}
             onChange={e=>setStartDate(e.target.value)}
             />
-        </label>
-        <label className="till">
+            </label>
+            <label className="till">
             Till:
             <input className="till1"
             type="text"
             value={endDate}
             onChange={e=>setEndDate(e.target.value)}
             />
-        </label>
-        <input className="submitBooking" type="submit" value={'Submit'}/>
-       </form>
+            </label>
+            <input className="submitBooking" type="submit" value={'Submit'}/>
+            </form>
             </div>
-    )
-}
+            )
+        }
 
 export default BookingForm;
