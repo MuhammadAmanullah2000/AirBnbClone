@@ -2,47 +2,47 @@
     /* position: fixed; */
     overflow: scroll;
     box-sizing: border-box;
-    background-color: grey;
+    background-color: rgb(221, 221, 221);
     /* display: flex;
     align-items: stretch;
     flex-direction: row; */
     top: 0px;
     width: 100%;
-    height: 200px;
-    border: 2px solid black;
+    height: 150px;
+    border: 2px solid white;
 }
 
 
 .airBnbButton {
 		width: 120px;
 		height: 61px;
-		padding: 5px 5px;
+		/* padding: 5px 5px; */
         font-size: 20px;
         color: red;
 		float: left;
-		border: 1px solid #DCE0E0;
+		/* border: 1px solid #DCE0E0;
 		border-top: none;
-		border-bottom-color: transparent;
+		border-bottom-color: transparent; */
     /* float: right;
     width: 27px;
     height: 19px;
     border: 2px solid red; */
 }
 .airBnbButton:hover{
-    background-color: #F5F5F5;
+    background-color: rgb(229, 207, 211);
     cursor: pointer;
 }
 
 .showBookings {
     width: 190px;
 		height: 75px;
-		padding: 5px 5px;
+		/* padding: 5px 5px; */
         font-size: 20px;
         color: red;
 		margin-left: 30%;
-		border: 1px solid #DCE0E0;
+		/* border: 1px solid #DCE0E0;
 		border-top: none;
-		border-bottom-color: transparent;
+		border-bottom-color: transparent; */
     /* display: inline-flex;
     flex-direction: row;
     width: 200px;
@@ -54,19 +54,20 @@
 } */
 }
 .showBookings:hover {
-    background-color: #F5F5F5;
+    /* background-color: #F5F5F5; */
+    background-color: rgb(229, 207, 211);
     cursor: pointer;
 }
 .makeSpot {
     width: 200px;
 		height: 75px;
-		padding: 5px 5px;
+		/* padding: 5px 5px; */
         font-size: 20px;
         color: red;
 		margin-left: 30%;
-		border: 1px solid #DCE0E0;
+		/* border: 1px solid #DCE0E0;
 		border-top: none;
-		border-bottom-color: transparent;
+		border-bottom-color: transparent; */
     /* display: inline-flex;
     flex-direction: row;
     width: 200px;
@@ -77,17 +78,14 @@
     align-items: center; */
 }
 .makeSpot:hover {
-    background-color: #F5F5F5;
+    background-color: rgb(229, 207, 211);
     cursor: pointer;
 }
 
 .profileButton {
-    width: 200px;
-		height: 75px;
-		padding: 5px 5px;
-        font-size: 20px;
-        color: black;
-		margin-left: 10px;
+   width:75px;
+   color: red;
+
 		/* border: 1px solid #DCE0E0;
 		border-top: none;
 		border-bottom-color: transparent; */
@@ -101,3 +99,37 @@
     background-color: #F5F5F5;
     cursor: pointer;
 } */
+
+.profileButton:hover {
+    background-color: rgb(229, 207, 211);
+    cursor: pointer;
+}
+
+.logOutButton {
+    color: black;
+}
+
+.logOutButton:hover {
+    background-color: red;
+    cursor: pointer;
+}
+
+.logInButton {
+    margin-left: 70%;
+    font-size: 25px;
+}
+
+.logInButton:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.signUpButton {
+    margin-left: 10px;
+    font-size: 25px;
+}
+
+.signUpButton:hover {
+    color: green;
+    cursor: pointer;
+}

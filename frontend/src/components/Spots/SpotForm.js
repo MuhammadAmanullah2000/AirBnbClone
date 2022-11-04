@@ -33,6 +33,7 @@ const SpotForm = () => {
         e.preventDefault();
         const spot = {ownerId,address,city,state,country,lat,lng,name,description,price,avgRating,previewImage,image};
         dispatch(createASpot(spot))
+        history.push('/')
 
     }
     // useEffect(()=>{

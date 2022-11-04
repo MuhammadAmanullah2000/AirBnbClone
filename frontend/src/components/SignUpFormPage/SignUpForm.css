@@ -8,3 +8,13 @@
     align-content: space-around;
     justify-content: space-around;
 }
+
+.signUp {
+    margin-left: 5px;
+    margin-top: 20px;
+}
+
+.signUp:hover {
+    background-color: green;
+    cursor: pointer;
+}

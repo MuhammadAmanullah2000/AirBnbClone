@@ -6,6 +6,8 @@ import {updateASpot} from "../../store/spots.js"
 // import {useForm} from "react-hook-form"
 import {deleteASpot} from "../../store/spots.js"
 // import BookingForm from "../Booking/BookingForm.js"
+import "./Spots.css"
+import "../Booking/Bookings.css"
 
 
 function SpotById() {
@@ -92,6 +94,7 @@ function SpotById() {
             // e.preventDefault();
             const spot = {id1,ownerId,address,city,state,country,lat,lng,name,description,price,avgRating,previewImage,image};
             dispatch(updateASpot(spot))
+            history.push('/')
         }
         // }else if(e.nativeEvent.submitter.value === "createNewBooking"){
         //     e.preventDefault();
@@ -106,17 +109,17 @@ function SpotById() {
 
     if(store.session.user===undefined){
         return (
-            <>
-            <img className="showingSpots" src={spotObj.image}/>
             <div>
+            <img className="showingSpots" src={spotObj.image}/>
+            <span>
                 {spotKeys.map((el,i)=>(
                     <div>
                     <span>{el}:  </span>
-                    <span>{spotValues[i]}:  </span>
+                    <span className="itemSpotsShow5"> {spotValues[i]}  </span>
                     </div>
                 ))}
-            </div>
-                </>
+            </span>
+                </div>
         )
 
         }else if(User!==ownerId){
@@ -127,12 +130,12 @@ function SpotById() {
                     {spotKeys.map((el,i)=>(
                         <div>
                         <span>{el}:  </span>
-                        <span>{spotValues[i]}:  </span>
+                        <span className="itemSpotsShow5">{spotValues[i]}   </span>
                         </div>
                     ))}
                 </div>
                 <div>
-                <button onClick={(e)=>handleClick(e)}>Create a booking</button>
+                <button className="createBookings" onClick={(e)=>handleClick(e)}>Create a booking</button>
                 </div>
                 </>
             )

@@ -44,9 +44,10 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <>
-        <NavLink to="/login">Log In</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
-        <button onClick={showAllSpots}><FontAwesomeIcon icon={faAirbnb}></FontAwesomeIcon></button>
+      <button className='airBnbButton' onClick={showAllSpots}><FontAwesomeIcon icon={faAirbnb}></FontAwesomeIcon>  airbnb</button>
+        <NavLink className="logInButton" to="/login">Log In</NavLink>
+        <NavLink className="signUpButton" to="/signup">Sign Up</NavLink>
+        {/* <button onClick={showAllSpots}><FontAwesomeIcon icon={faAirbnb}></FontAwesomeIcon></button> */}
       </>
     );
   }

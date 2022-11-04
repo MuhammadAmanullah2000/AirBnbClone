@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session.js";
 import './SignUpForm.css'
+import '../Spots/Spots.css'
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -35,61 +36,63 @@ function SignupFormPage() {
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
-      <label>
-        firstName
-        <input
+      <label className="itemSpotsShow">
+        FirstName:
+        <input className="itemSpotsShow2"
           type="text"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
           required
         />
       </label>
-      <label>
-        lastName
-        <input
+      <label className="itemSpotsShow">
+        LastName:
+        <input className="itemSpotsShow2"
           type="text"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
           required
         />
       </label>
-      <label>
-        Email
-        <input
+      <label className="itemSpotsShow">
+        Email:
+        <input className="itemSpotsShow2"
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
       </label>
-      <label>
-        Username
-        <input
+      <label className="itemSpotsShow">
+        Username:
+        <input className="itemSpotsShow2"
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
         />
       </label>
-      <label>
-        Password
-        <input
+      <label className="itemSpotsShow">
+        Password:
+        <input className="itemSpotsShow2"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
       </label>
-      <label>
-        Confirm Password
-        <input
+      <label className="itemSpotsShow">
+        Confirm Password:
+        <input className="itemSpotsShow2"
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
         />
       </label>
-      <button type="submit">Sign Up</button>
+      <div>
+      <button className="signUp" type="submit">Sign Up</button>
+      </div>
     </form>
   );
 }

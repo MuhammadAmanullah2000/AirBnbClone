@@ -8,3 +8,28 @@
     align-content: space-around;
     justify-content: center;
 }
+
+.logIn {
+    font-size: 25px;
+    height: 40px;
+    width:100px;
+    margin-left: 5px;
+    margin-top: 20px;
+}
+
+.logIn:hover {
+    background-color: green;
+    cursor: pointer;
+}
+
+.login123{
+    margin-left: 10px;
+    margin-top: 5px;
+    font-size: 25px;
+}
+
+.login1234{
+    margin-left: 5px;
+    margin-top: 5px;
+    font-size: 25px;
+}

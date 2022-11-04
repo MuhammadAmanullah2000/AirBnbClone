@@ -63,3 +63,19 @@
     margin-top: 20px;
     margin-left: 10px;
 }
+
+.itemSpotsShow4:hover {
+    color:white;
+    background-color: pink;
+    cursor: pointer;
+}
+
+.itemSpotsShow3:hover {
+    color:white;
+    background-color: purple;
+    cursor: pointer;
+}
+
+.itemSpotsShow5 {
+    color: blue;
+}

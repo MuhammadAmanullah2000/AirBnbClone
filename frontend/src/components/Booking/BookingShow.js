@@ -23,7 +23,6 @@ function AllBookings() {
         console.log('el');
         const booking = el;
         const deletedBooking = dispatch(deleteABooking(booking));
-        history.push('/spots');
     }
     return (
         <div>

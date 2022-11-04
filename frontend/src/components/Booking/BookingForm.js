@@ -23,27 +23,31 @@ const BookingForm = (props) => {
         e.preventDefault();
         const booking = {spotId,userId,startDate,endDate};
         dispatch(createABooking(booking))
+        history.push('/bookings/current')
     }
     return (
+        <div className="overallBookingForm">
+
        <form onSubmit={handleSubmit}>
-        <label>
-            startDate
-            <input
+        <label className="from">
+            From:
+            <input className="from1"
             type="text"
             value={startDate}
             onChange={e=>setStartDate(e.target.value)}
             />
         </label>
-        <label>
-            endDate
-            <input
+        <label className="till">
+            Till:
+            <input className="till1"
             type="text"
             value={endDate}
             onChange={e=>setEndDate(e.target.value)}
             />
         </label>
-        <input type="submit" value={'submit'}/>
+        <input className="submitBooking" type="submit" value={'Submit'}/>
        </form>
+            </div>
     )
 }
 
