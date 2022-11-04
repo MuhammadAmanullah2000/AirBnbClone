@@ -1,6 +1,11 @@
 
 # `AirBnb`
 
+## This is an AirBnb clone, the name of the app is AirBnbClone, below is the splash page for the website
+
+<img width="1423" alt="Screenshot 2022-11-04 at 8 18 13 AM" src="https://user-images.githubusercontent.com/97665449/199878728-78162dee-aaba-4e99-9e06-faa903232b53.png">
+
+
 ## Database Schema Design
 
 <img width="591" alt="Screenshot 2022-09-01 at 9 54 44 AM" src="https://user-images.githubusercontent.com/97665449/187834628-92394ba6-c857-4d99-af98-3d4361ea901a.png">
