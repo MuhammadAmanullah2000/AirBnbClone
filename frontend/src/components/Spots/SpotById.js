@@ -92,8 +92,12 @@ function SpotById() {
         }
         else if(e.nativeEvent.submitter.value === "update"){
             // e.preventDefault();
-            const spot = {id1,ownerId,address,city,state,country,lat,lng,name,description,price,avgRating,previewImage,image};
-            dispatch(updateASpot(spot))
+            if(address.length && city.length && state.length && country.length && name.length && description.length && previewImage.length && image.length && lat !== 0 && lng !== 0 && avgRating !== 0 && price !== 0){
+                const spot = {id1,ownerId,address,city,state,country,lat,lng,name,description,price,avgRating,previewImage,image};
+                dispatch(updateASpot(spot))
+                history.push('/')
+
+            }
             history.push('/')
         }
         // }else if(e.nativeEvent.submitter.value === "createNewBooking"){

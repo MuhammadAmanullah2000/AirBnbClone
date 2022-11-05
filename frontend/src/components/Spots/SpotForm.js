@@ -31,8 +31,11 @@ const SpotForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if(address.length && city.length && state.length && country.length && name.length && description.length && previewImage.length && image.length && lat !== 0 && lng !== 0 && avgRating !== 0 && price !== 0){
         const spot = {ownerId,address,city,state,country,lat,lng,name,description,price,avgRating,previewImage,image};
         dispatch(createASpot(spot))
+        history.push('/')
+        }
         history.push('/')
 
     }
