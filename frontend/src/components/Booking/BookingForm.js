@@ -21,8 +21,12 @@ const BookingForm = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const booking = {spotId,userId,startDate,endDate};
-        dispatch(createABooking(booking))
+        if(startDate.length && endDate.length){
+            const booking = {spotId,userId,startDate,endDate};
+            dispatch(createABooking(booking))
+            history.push('/bookings/current')
+
+        }
         history.push('/bookings/current')
     }
     return (
