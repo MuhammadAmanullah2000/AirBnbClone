@@ -21,13 +21,20 @@ const BookingForm = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(startDate.length && endDate.length){
+        if(startDate === 0){
+            alert("booking not created as no start Date provided")
+            history.push('/bookings/current')
+        }
+        if(endDate === 0){
+            alert("booking not created as no end Date provided")
+            history.push('/bookings/current')
+        }
+        if(startDate !== 0 && endDate !== 0){
             const booking = {spotId,userId,startDate,endDate};
             dispatch(createABooking(booking))
             history.push('/bookings/current')
-
         }
-        history.push('/bookings/current')
+
     }
     return (
         <div className="overallBookingForm">
@@ -37,6 +44,7 @@ const BookingForm = (props) => {
             From:
             <input className="from1"
             type="text"
+            // required="required"
             value={startDate}
             onChange={e=>setStartDate(e.target.value)}
             />
@@ -45,6 +53,7 @@ const BookingForm = (props) => {
             Till:
             <input className="till1"
             type="text"
+            // required="required"
             value={endDate}
             onChange={e=>setEndDate(e.target.value)}
             />

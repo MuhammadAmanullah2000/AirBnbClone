@@ -31,12 +31,59 @@ const SpotForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(address.length && city.length && state.length && country.length && name.length && description.length && previewImage.length && image.length && lat !== 0 && lng !== 0 && avgRating !== 0 && price !== 0){
+        if(address === ""){
+            alert("spot not created as no address provided");
+            history.push('/')
+        }
+        if(city === ""){
+            alert("spot not created as no city provided");
+            history.push('/')
+        }
+        if(state === ""){
+            alert("spot not created as no state provided");
+            history.push('/')
+        }
+        if(country === ""){
+            alert("spot not created as no country provided");
+            history.push('/')
+        }
+        if(name === ""){
+            alert("spot not created as no name provided");
+            history.push('/')
+        }
+        if(description === ""){
+            alert("spot not created as no description provided");
+            history.push('/')
+        }
+        if(previewImage === ""){
+            alert("spot not created as no previewImage link provided");
+            history.push('/')
+        }
+        if(image === ""){
+            alert("spot not created as no image link provided");
+            history.push('/')
+        }
+        if(lat === 0){
+            alert("spot not created as no latitude provided");
+            history.push('/')
+        }
+        if(lng === 0){
+            alert("spot not created as no longitude provided");
+            history.push('/')
+        }
+        if(avgRating === 0){
+            alert("spot not created as no average rating provided provided");
+            history.push('/')
+        }
+        if(price === 0){
+            alert("spot not created as no price provided");
+            history.push('/')
+        }
+        if(address === "" && city === "" && state === "" && country === "" && name === "" && description === "" && previewImage === "" && image === "" && lat !== 0 && lng !== 0 && avgRating !== 0 && price !== 0){
         const spot = {ownerId,address,city,state,country,lat,lng,name,description,price,avgRating,previewImage,image};
         dispatch(createASpot(spot))
         history.push('/')
         }
-        history.push('/')
 
     }
     // useEffect(()=>{
