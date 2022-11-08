@@ -79,7 +79,7 @@ const SpotForm = () => {
             alert("spot not created as no price provided");
             history.push('/')
         }
-        if(address === "" && city === "" && state === "" && country === "" && name === "" && description === "" && previewImage === "" && image === "" && lat !== 0 && lng !== 0 && avgRating !== 0 && price !== 0){
+        if(address !== "" && city !== "" && state !== "" && country !== "" && name !== "" && description !== "" && previewImage !== "" && image !== "" && lat !== 0 && lng !== 0 && avgRating !== 0 && price !== 0){
         const spot = {ownerId,address,city,state,country,lat,lng,name,description,price,avgRating,previewImage,image};
         dispatch(createASpot(spot))
         history.push('/')
