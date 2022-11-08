@@ -21,15 +21,15 @@ const BookingForm = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(startDate === 0){
-            alert("booking not created as no start Date provided")
+        if(startDate === 0 || startDate.length < 10 || startDate.length > 10){
+            alert("booking not created as invalid starting date")
             history.push('/bookings/current')
         }
-        if(endDate === 0){
-            alert("booking not created as no end Date provided")
+        if(endDate == 0 || endDate.length < 10 || endDate.length > 10){
+            alert("booking not created as invalid ending date")
             history.push('/bookings/current')
         }
-        if(startDate !== 0 && endDate !== 0){
+        if(startDate.length === 10 && endDate.length === 10){
             const booking = {spotId,userId,startDate,endDate};
             dispatch(createABooking(booking))
             history.push('/bookings/current')
